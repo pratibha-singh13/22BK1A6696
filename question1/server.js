@@ -6,9 +6,7 @@
 // 	"clientID": "bdc0b3d0-be38-43e2-b682-477b4a5f8bf0",
 // 	"clientSecret": "FHkHJMxbfTTXhryz"
 // }
-// =========================
-// question1/server.js
-// =========================
+
 
 import express from "express";
 import dotenv from "dotenv";
@@ -24,10 +22,9 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 app.use(express.json());
-app.use(logger); // Custom logging
-app.use(authorize); // Pre-authorization middleware
-
-app.use("/api", urlRoutes); // All routes under /api
+app.use(logger);
+app.use(authorize);
+app.use("/api", urlRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
